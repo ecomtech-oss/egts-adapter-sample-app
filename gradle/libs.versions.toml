@@ -1,0 +1,32 @@
+[versions]
+
+egts-adapter = "2.0.0-SNAPSHOT"
+
+kotlin = "1.9.24"
+
+spring-boot = "3.2.5"
+spring-integration = "6.2.4"
+
+mockk = "1.13.16"
+springmockk = "4.0.2"
+
+[plugins]
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+[libraries]
+# egts-adapter
+egts-adapter = { module = "tech.ecom.egts:adapter-starter", version.ref = "egts-adapter" }
+
+# spring-boot
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
+spring-boot-starter-integration = { module = "org.springframework.boot:spring-boot-starter-integration", version.ref = "spring-boot" }
+spring-integration-ip = { module = "org.springframework.integration:spring-integration-ip", version.ref = "spring-integration" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+
+# test
+mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
+spring-integration-test-support = { module = "org.springframework.integration:spring-integration-test-support", version.ref = "spring-integration"}
+spring-integration-test = { module = "org.springframework.integration:spring-integration-test", version.ref = "spring-integration" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot"}
+springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }

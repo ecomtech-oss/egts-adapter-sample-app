@@ -1,0 +1,18 @@
+egts:
+  initialize-encoders: true
+  dispatcher-id: 333
+
+tcp:
+  server-address: "localhost"
+  server-port: 9090
+  client-timeout: 1000
+  probe-interval: 100
+
+logging:
+  level:
+    tech.ecom: DEBUG
+
+spring:
+  jackson:
+    serialization:
+      indent-output: true
