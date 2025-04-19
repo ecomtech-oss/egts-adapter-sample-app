@@ -24,6 +24,9 @@ spring-boot-starter-integration = { module = "org.springframework.boot:spring-bo
 spring-integration-ip = { module = "org.springframework.integration:spring-integration-ip", version.ref = "spring-integration" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
 
+# jackson-kotlin for logging
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
+
 # test
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 spring-integration-test-support = { module = "org.springframework.integration:spring-integration-test-support", version.ref = "spring-integration"}

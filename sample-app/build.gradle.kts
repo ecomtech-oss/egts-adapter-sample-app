@@ -12,7 +12,7 @@ dependencies {
     implementation(libs.spring.boot.starter.web)
 
     // serialization for logging
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation(libs.jackson.kotlin)
 
     // test
     testImplementation(libs.spring.boot.starter.test)
