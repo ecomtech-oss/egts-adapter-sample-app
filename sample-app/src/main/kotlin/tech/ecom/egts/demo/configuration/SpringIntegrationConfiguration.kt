@@ -44,21 +44,21 @@ open class SpringIntegrationConfiguration(
     @Bean
     open fun receivingChannel(): MessageChannel = DirectChannel()
 
-    @Bean
-    open fun connectionCloser(connectionFactory: TcpNetClientConnectionFactory): () -> Unit {
-        return {
-            connectionFactory.stop()
-            logger.info(
-                "TCP connection to {}:{} has been closed.",
-                connectionFactory.host, connectionFactory.port,
-            )
-            connectionFactory.start()
-            logger.info(
-                "TCP connection to {}:{} is ready to be established.",
-                connectionFactory.host, connectionFactory.port,
-            )
-        }
-    }
+//    @Bean
+//    open fun connectionCloser(connectionFactory: TcpNetClientConnectionFactory): () -> Unit {
+//        return {
+//            connectionFactory.stop()
+//            logger.info(
+//                "TCP connection to {}:{} has been closed.",
+//                connectionFactory.host, connectionFactory.port,
+//            )
+//            connectionFactory.start()
+//            logger.info(
+//                "TCP connection to {}:{} is ready to be established.",
+//                connectionFactory.host, connectionFactory.port,
+//            )
+//        }
+//    }
 
     @Bean
     open fun connectionFactory(

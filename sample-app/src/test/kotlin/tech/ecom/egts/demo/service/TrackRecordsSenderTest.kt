@@ -1,7 +1,6 @@
 package tech.ecom.egts.demo.service
 
 import io.mockk.every
-import io.mockk.mockk
 import io.mockk.verify
 import java.util.stream.Stream
 import org.assertj.core.api.Assertions.assertThat
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.integration.test.context.SpringIntegrationTest
 import org.springframework.messaging.support.GenericMessage
 import tech.ecom.egts.demo.AbstractIntegrationTest
@@ -74,7 +72,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
             )
 
         // when
-        trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         verify(exactly = 1) { egtsServerConnectionManagerMockk.openConnectionOrGetError() }
@@ -91,7 +89,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
             )
 
         // when
-        trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         verify(exactly = 0) { egtsServerConnectionManagerMockk.openConnectionOrGetError() }
@@ -103,7 +101,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
         every { egtsServerConnectionManagerMockk.isConnectionClosed } returns true
         every { egtsServerConnectionManagerMockk.openConnectionOrGetError() } returns "error"
         // when
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isNotEqualTo(trackRecordsSender.SUCCESS_RESPONSE)
@@ -128,7 +126,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
         every { sendingChannelMockk.send(any()) } throws testCase.exception
 
         // when
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isNotEqualTo(trackRecordsSender.SUCCESS_RESPONSE)
@@ -141,7 +139,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
         every { egtsServerConnectionManagerMockk.sendPacketOrGetTextError(any()) } returns "error message"
 
         // when
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isNotEqualTo(trackRecordsSender.SUCCESS_RESPONSE)
@@ -170,7 +168,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
         )
 
         // when
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isEqualTo(trackRecordsSender.SUCCESS_RESPONSE)
@@ -207,7 +205,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
             ),
         )
 
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isNotEqualTo(trackRecordsSender.SUCCESS_RESPONSE)
@@ -221,7 +219,7 @@ class TrackRecordsSenderTest : AbstractIntegrationTest() {
         every { egtsServerConnectionManagerMockk.getResponsePacket(any()) } returns null
 
         // when
-        val response = trackRecordsSender.sendTrackRecord(listOf(CourierTrackRecord.random()))
+        val response = trackRecordsSender.sendTrackRecords(listOf(CourierTrackRecord.random()))
 
         // then
         assertThat(response).isNotEqualTo(trackRecordsSender.SUCCESS_RESPONSE)

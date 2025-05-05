@@ -18,7 +18,7 @@ class TrackRecordsSender(
 
     val SUCCESS_RESPONSE = "sent packet successfully"
 
-    fun sendTrackRecord(courierTrackRecords: List<CourierTrackRecord>): String {
+    fun sendTrackRecords(courierTrackRecords: List<CourierTrackRecord>): String {
         logger.debug("sending ${courierTrackRecords.size} track records")
         logger.debug(courierTrackRecords.joinToString("\n") { JsonUtil.toPrettyJson(it) })
 

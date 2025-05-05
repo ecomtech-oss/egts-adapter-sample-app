@@ -16,7 +16,7 @@ class TrackRecordsController(
 
     @PostMapping("/send_track_record")
     fun sendTrackCourierRecord(@RequestBody trackRecordsToSend: Int) =
-        trackRecordsSender.sendTrackRecord(
+        trackRecordsSender.sendTrackRecords(
             List(trackRecordsToSend) { CourierTrackRecord.random() },
         )
 
